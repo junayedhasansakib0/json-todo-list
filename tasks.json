@@ -7,8 +7,14 @@
   },
   {
     "task": "go to home and get packed for tour",
-    "priority": "",
-    "status": "completed",
+    "priority": "Medium",
+    "status": "incomplete",
     "completed_at": "2025-06-08 01:47:11"
+  },
+  {
+    "task": "Buy train tickets",
+    "priority": "Medium",
+    "status": "completed",
+    "completed_at": "2025-06-08 11:52:08"
   }
 ]

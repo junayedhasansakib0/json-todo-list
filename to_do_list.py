@@ -97,6 +97,48 @@ def completeTask():
     except ValueError:
         print("Invalid input! Please enter a number.")
 
+def undoTask():
+    
+    if not os.path.exists('tasks.json'):
+        print("No tasks to complete.")
+        return
+    
+    with open('tasks.json', 'r') as file:
+        tasks = json.load(file)
+        
+    completed_tasks = [t for t in tasks if t['status'] == 'completed']
+    
+    if not completed_tasks:
+        print("No complete tasks available to undo.")
+        return
+    
+    
+    print("\n--- Completed Tasks ---")
+    for idx, task in enumerate(completed_tasks, 1):
+        completed_at = task.get('completed_at', 'Unknown time')
+        print(f"{idx}. {task['task']} [Priority: {task['priority']}] - Completed at: {completed_at}")
+        
+    try:
+        task_num = int(input("Enter task number to mark as incomplete: ")) - 1
+        if 0 <= task_num < len(completed_tasks):
+            
+            task_to_undo = completed_tasks[task_num]
+            for task in tasks:
+                if task == task_to_undo:
+                    task['status'] = 'incomplete'
+                    break
+
+            with open('tasks.json', 'w') as file:
+                json.dump(tasks, file, indent=4)
+
+            print("Task marked as incomplete.")
+        else:
+            print("Invalid task number.")
+    except ValueError:
+        print("Invalid input! Please enter a number.")
+    
+        
+
 def main():
     while True:
         print("\n--- Your JSON To-Do List ---")
@@ -104,7 +146,8 @@ def main():
         print("2. Show Incomplete Tasks")
         print("3. Complete Task")
         print("4. Show Completed Tasks")
-        print("5. Exit")
+        print("5. Undo Completed Tasks")
+        print("6. Exit")
 
         try:
             choice = int(input("Enter your choice: "))
@@ -119,6 +162,8 @@ def main():
             elif choice == 4:
                 showCompletedTasks()
             elif choice == 5:
+                undoTask()
+            elif choice == 6:
                 print("Exiting... Bye!")
                 break
             else:
