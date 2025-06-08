@@ -10,6 +10,7 @@ The JSON To-Do List is a simple command-line application built with Python that 
 - **Show Incomplete Tasks**: Display all tasks that are not yet completed.
 - **Complete Task**: Mark an incomplete task as completed, recording the completion timestamp.
 - **Show Completed Tasks**: View all completed tasks with their completion timestamps.
+- **Undo Completed Tasks**: Display all completed tasks along with their completion timestamps, and provide an option to undo task completion..
 - **Persistent Storage**: Tasks are saved to and loaded from a `tasks.json` file for persistence between sessions.
 
 ## Prerequisites
@@ -32,14 +33,15 @@ The JSON To-Do List is a simple command-line application built with Python that 
 
 1. Run the program using Python:
    ```bash
-   python todo.py
+   python to_do_list.py
    ```
 2. Follow the on-screen menu to:
    - Add a new task (option 1)
    - View incomplete tasks (option 2)
    - Mark a task as completed (option 3)
    - View completed tasks (option 4)
-   - Exit the program (option 5)
+   - Undo completed tasks (option 5)
+   - Exit the program (option 6)
 
 ### Example Interaction
 
@@ -49,7 +51,8 @@ The JSON To-Do List is a simple command-line application built with Python that 
 2. Show Incomplete Tasks
 3. Complete Task
 4. Show Completed Tasks
-5. Exit
+5. Undo Completed Tasks
+6. Exit
 Enter your choice: 1
 Enter your task: Buy groceries
 Priority (High/Medium/Low): High
